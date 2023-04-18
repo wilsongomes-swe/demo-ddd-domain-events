@@ -30,7 +30,7 @@
         _logger.LogInformation("Commit: {number} domain events raised", domainEvents.Count());
 
         foreach(var @event in domainEvents)
-            await _domainEventDispatcher.Dispatch(@event);
+            await _domainEventDispatcher.Dispatch((dynamic) @event);
         
         modifiedAggregatesChangeTrackers.ToList().ForEach(aggregates => aggregates.Entity.ClearEvents());
     }

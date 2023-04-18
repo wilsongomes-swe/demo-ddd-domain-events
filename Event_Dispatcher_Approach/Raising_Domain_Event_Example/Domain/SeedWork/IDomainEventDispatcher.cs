@@ -1,3 +1,3 @@
 ﻿interface IDomainEventDispatcher { 
-    Task Dispatch(IDomainEvent domainEvent); 
+    Task Dispatch<TDomainEvent>(TDomainEvent domainEvent) where TDomainEvent : IDomainEvent; 
 }
