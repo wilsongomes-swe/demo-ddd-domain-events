@@ -8,7 +8,7 @@ class CreateIntegrationEventCreatedCompanyHandler : IDomainEventHandler<CompanyC
 
     public Task Handle(CompanyCreatedEvent domainEvent)
     {
-        _logger.LogInformation("Let`s communicate other microservices: Comany created event handled for {email}", 
+        _logger.LogInformation("Let`s communicate other microservices: Company created event handled for {CompanyId}", 
             domainEvent.CompanyId);
         return Task.CompletedTask;
     }

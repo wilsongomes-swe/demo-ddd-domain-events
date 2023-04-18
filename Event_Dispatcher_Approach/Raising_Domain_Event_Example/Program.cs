@@ -19,6 +19,10 @@ builder.Services.AddSingleton<IDomainEventHandler<AccountCreatedEvent>, CreateIn
 builder.Services.AddSingleton<IDomainEventHandler<AccountCreatedEvent>, SendEmailForAccountCreatedEventListener>();
 builder.Services.AddSingleton<IDomainEventHandler<CompanyCreatedEvent>, CreateIntegrationEventCreatedCompanyHandler>();
 
+// the below handler is a generic one, if the event raised does not have a specific handler, it will be handled by this one
+// can be used to log all events raised, or to publish all events direct to the event bus (RabbitMQ, Kafka, etc)
+// builder.Services.AddSingleton(typeof(IDomainEventHandler<>), typeof(GenericCreateIntegrationEventHandler<>));
+
 builder.Services.AddSingleton<IDomainEventDispatcher, DomainEventDispatcher>();
 
 var app = builder.Build();
